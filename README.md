@@ -29,7 +29,7 @@ No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
 
 > 使用 snowpack 打包构建,可能没多少 esm 的插件支撑,不过很 nice
 
-现在使用 vue3 踩坑,尽可能用函数组件写法,本套支持 jsx vue tsx | 模版里面混 tsx 或者 jsx,比较混乱,风格上统一为 vue 模版,在 script 中 lang=ts 形式,同时用 vue3 提供 compitison api 写法,其它支持 sass,scss,css 等;
+现在使用 vue3 踩坑,尽可能用函数组件写法,本套支持 jsx vue tsx | 模版里面混 tsx 或者 jsx,比较混乱,风格上统一为 vue 模版,在 script 中 lang=ts 形式,同时用 vue3 提供 Composition API 写法,其它支持 sass,scss,css 等;
 
 ## TODO
 
