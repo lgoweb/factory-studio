@@ -16,7 +16,7 @@ export default defineComponent({
     Demo,
   },
   setup() {
-    const state = reactive({
+    const state = reactive<State>({
       message: "Learn Vue",
     });
     return {
