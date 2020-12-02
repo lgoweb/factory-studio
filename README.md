@@ -104,20 +104,23 @@ No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
     data(){
       a: 1
     },
+    // 定义函数的区间
     methods: {
         clickEvent: function () {
             console.log('这个是定义事件的地方')
         }
-    }
-    // 这是定义外面传入值的内容的名字,一般不是组件不用定义props,也就是 txt:"abc",会替换这里的ssss
+    },
+    
+   // 这是定义外面传入值的内容的名字,一般不是组件不用定义props,也就是 txt:"abc",会替换这里的ssss
    props: {
     txt: {
       type: String,
       default: "ssss",
     },
-  },
+   },
+  
   // 这个要写一般 实际作为页面内部消耗的变量等东西,下面是里面的几个生命周期,还有些,要查,
-  setup() {
+  setup(context,state) {
     console.log("1-开始创建组件-setup");
     const data: DataProps = reactive({
       title: "标题",
@@ -133,6 +136,8 @@ No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
       ...refData,
     };
   },
+  
+  // 其它如provide (注入器) / components 外部倒入注册使用 / filter(过滤器) 的东西可以去看看
   })
 </script>
 
