@@ -74,3 +74,78 @@ No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
 │   └── static.d.ts
 └── yarn.lock # 包固定锁
 ```
+
+## vue3(可能是 vue2)语法快速写
+
+```Vue
+// 网页的基本布局的骨架/配合样式内容渲染为好看的东西
+<template>
+  // 一定只有一层结构 <> ... <>不然报错 ,比方下面只有一个最外围的 div,不能再有同级的内容
+  <div>
+    <h2 class="classname"> 这是一个标题的标签 </h2>
+    <img src="图片地址">
+    <button @click="clickEvent">点击按钮</button>
+  </div>
+
+<template>
+
+// 控制交互逻辑的地方 ,请求关闭,跳转,点击跳转等
+<script lang="ts">
+  import {defineCompoent,setup,reactive,toRefs,onBeforeMount,onMounted} from 'vue';
+
+  // 定义数据的类型,这种东西实在看着来就好了 int str number boolean 这些
+  interface DataProps {
+    title: string;
+  }
+
+  export default defineComponent({
+    name: 'pageA' // 必须要申明
+    // data(){...} 申明变量可以用的
+    data(){
+      a: 1
+    },
+    methods: {
+        clickEvent: function () {
+            console.log('这个是定义事件的地方')
+        }
+    }
+    // 这是定义外面传入值的内容的名字,一般不是组件不用定义props,也就是 txt:"abc",会替换这里的ssss
+   props: {
+    txt: {
+      type: String,
+      default: "ssss",
+    },
+  },
+  // 这个要写一般 实际作为页面内部消耗的变量等东西,下面是里面的几个生命周期,还有些,要查,
+  setup() {
+    console.log("1-开始创建组件-setup");
+    const data: DataProps = reactive({
+      title: "标题",
+    });
+    onBeforeMount(() => {
+      console.log("2.组件挂载页面之前执行----onBeforeMount");
+    });
+    onMounted(() => {
+      console.log("3.-组件挂载到页面之后执行-------onMounted");
+    });
+    const refData = toRefs(data);
+    return {
+      ...refData,
+    };
+  },
+  })
+</script>
+
+// 样式内容,就是修饰网页的,文字颜色大小等
+<style scoped lang="scss">
+// 标签h2 红色
+  h2{
+    color:red;
+  }
+  // 类名 样式 字体20大小,名字可以取f20好点
+  .classname{
+    font-size: 20px
+  }
+</style>
+
+```
